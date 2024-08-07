@@ -29,7 +29,7 @@ const createMovieCard = (movie) => {
   `;
 
   card.addEventListener("click", () => {
-    window.location.href = `/html/movie_detail.html?id=${movie.id}`;
+    window.location.href = `./movie_collection/html/movie_detail.html?id=${movie.id}`;
   });
 
   return card;

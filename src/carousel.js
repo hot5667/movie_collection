@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             informationButton.id = `information_${id}`;
             informationButton.innerHTML = '<i class="fas fa-info-circle"></i> 상세정보';
             informationButton.onclick = () => {
-                window.location.href = `/html/movie_detail.html?id=${movieId}`;
+                window.location.href = `./movie_collection/html/movie_detail.html?id=${movieId}`;
             };
 
             buttonContainer.appendChild(shortcutsButton);
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 모바일 및 태블릿 환경
                 slide.style.cursor = 'pointer';
                 slide.onclick = () => {
-                    window.location.href = `/html/movie_detail.html?id=${movieId}`;
+                    window.location.href = `./movie_collection/html/movie_detail.html?id=${movieId}`;
                 };
             } else {
                 // PC 환경

@@ -4,7 +4,7 @@ const { API_KEY, BASEURL } = DEFAPIKEY;
 // JSON 파일에서 영화 데이터를 불러오는 함수
 const FETCH_MOVIES_FROM_JSON = async () => {
   try {
-    const RESPONSE = await fetch('./movies.json');
+    const RESPONSE = await fetch('./movie_collection/movies.json');
     if (!RESPONSE.ok) throw new Error('네트워크 응답이 올바르지 않습니다.');
     return await RESPONSE.json();
   } catch (ERROR) {
