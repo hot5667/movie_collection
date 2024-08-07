@@ -1,86 +1,176 @@
+/* PC 환경 스타일 (기본) */
 .carousel-container {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-    transform: translateY(85px);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  transform: translateY(85px);
 }
 
 .carousel-subcontainer {
-    width: 100%;
-    max-width: 1500px; /* 최대 너비 */
-    height: 500px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 15px;
-    margin: 70px auto; /* 중앙 정렬 */
-    transform:scale(1.27);
+  width: 100%;
+  max-width: 1500px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  margin: 70px auto;
+  transform: scale(1.27);
+  margin-bottom: 10%;
 }
 
 .carousel-slide {
-    display: flex;
-    transition: transform 1.5s ease-in-out;
+  display: flex;
+  transition: transform 1.5s ease-in-out;
 }
 
 .carousel-slide img {
-    width: 1500px;
-    height: 500px;
-    border-radius: 15px;
-    object-fit: cover; /* 이미지 비율 유지 */
+  width: 1500px;
+  height: 500px;
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .carousel-nav {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
 }
 
 .nav-dot {
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .nav-dot.active {
-    background-color: #FFCA46;
+  background-color: #ffca46;
 }
 
-.shortcuts, .information {
-    position: absolute;
-    padding: 5px 10px; /* 크기 축소 */
-    background-color: #FFCA46;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    z-index: 10;
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: 14px; /* 글꼴 크기 축소 */
-    font-weight: bold;
-    width: 97px;
-    height: 36px;
-}
-
-.shortcuts:hover, .information:hover {
-    background-color: #df9204;
-    transform: scale(1.05);
-}
-
-.shortcuts {
-    bottom: 20px;
-    left: 20px;
-}
-
+/* 버튼 디자인 통일 */
+.shortcuts,
 .information {
-    bottom: 20px;
-    left: 130px; /* 바로가기 버튼 옆에 배치 */
+  padding: 5px 10px;
+  background-color: #ffca46;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 14px;
+  font-weight: bold;
+  width: 97px;
+  height: 36px;
+  z-index: 1024;
+  position: absolute; /* 버튼을 절대 위치로 설정 */
+}
+
+.shortcuts:hover,
+.information:hover {
+  background-color: #df9204;
+  transform: scale(1.05);
+}
+
+/* 버튼 위치 설정 */
+.carousel-slide .button-container {
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 40px); /* 좌우 여백을 고려하여 버튼 위치 조정 */
+  pointer-events: auto; /* 버튼 클릭 가능 */
+}
+
+#Madame_web {
+  left: 20px;
+}
+
+#information_Madame_web {
+  left: 120px;
+}
+
+#The_hobbit {
+  left: 1520px;
+}
+
+#information_The_hobbit {
+  left: 1620px;
+}
+
+#Joker {
+  left: 3020px;
+}
+
+#information_Joker {
+  left: 3120px;
+}
+
+/* 반응형 CSS */
+
+/* 아이폰 12 (최대 너비 390px) */
+@media (max-width: 400px) {
+  .carousel-subcontainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .carousel-slide {
+    flex-direction: row; /* 사진이 행으로 정렬되도록 설정 */
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+  }
+
+  .shortcuts,
+  .information {
+    display: none; /* 모바일에서 버튼 숨기기 */
+  }
+}
+
+/* 아이패드 프로 (최소 너비 768px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .carousel-subcontainer {
+    width: 80vw;
+    height: auto;
+  }
+
+  .carousel-slide {
+    flex-direction: row; /* 사진이 행으로 정렬되도록 설정 */
+  }
+
+  .carousel-slide img {
+    width: 80vw;
+    height: auto;
+  }
+
+  .shortcuts,
+  .information {
+    display: none; /* 태블릿에서 버튼 숨기기 */
+  }
+}
+
+/* 16:9 비율 유지 */
+@media screen and (max-width: 1920px) {
+  .carousel-subcontainer {
+    width: 78.125vw;
+    max-width: 1500px;
+    height: calc(78.125vw * 0.3333);
+    margin-bottom: 10%;
+  }
+
+  .carousel-slide img {
+    width: 78.125vw;
+    height: calc(78.125vw * 0.3333);
+  }
 }

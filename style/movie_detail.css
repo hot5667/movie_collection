@@ -5,7 +5,7 @@
   overflow: hidden;
   width: 100%; /* 전체 너비를 부모에 맞춤 */
 }
-//모바일 규격 12pro 390*844 
+/* //모바일 규격 12pro 390*844  */
 
 @media screen and (min-width:390px) {
 .header-container {
@@ -58,11 +58,8 @@
 .information {
   left: 120px;
 }
-}
 
-
-}
-//landscape 
+/* //landscape  */
 @media only screen and (min-width: 390px) and (orientation: landscape) {
   
   .carousel-slide {
@@ -72,10 +69,7 @@
     flex-direction: row;
   }
 }
-      
-    
-
-
+  
 
 /* 기본 스타일 */
 body {
@@ -147,9 +141,12 @@ body {
 
 /* 리뷰 작성 폼 스타일 */
 .review_form {
+  transform: translateX(-3%);
+  display: flex;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  flex-direction: column;
 }
 
 .review_form input,
@@ -170,7 +167,7 @@ body {
 }
 
 .review_form button {
-  width: 104%;
+  width: 106%;
   padding: 10px;
   background-color: #ffca46;
   border: none;
@@ -259,7 +256,7 @@ body {
 }
 
 
-@media  screen and (max-width :390px) {
+@media  screen and (max-width :738px) {
   .carousel-container {
     width: 100%;
     overflow: hidden;
@@ -274,6 +271,7 @@ body {
   }
 
   .movie_poster {
+    display: flex;
     max-width: 100%;
     height: auto;
     margin-right: 0;

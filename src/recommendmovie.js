@@ -109,18 +109,34 @@ const SETUP_CAROUSEL_NAVIGATION = (CAROUSEL_ID) => {
     return;
   }
 
-  const SCROLL_AMOUNT = CAROUSEL.offsetWidth;
+  // 카드의 너비를 동적으로 계산
+  const CARD_WIDTH = CAROUSEL.children[0]?.offsetWidth || 0;
+
+  // 스크롤 시 최댓값과 최솟값을 설정
+  const MAX_SCROLL_LEFT = CAROUSEL.scrollWidth - CAROUSEL.clientWidth;
+  
+  let currentScroll = 0;
 
   NEXT_BTN.addEventListener('click', () => {
-    CAROUSEL.scrollBy({
-      left: SCROLL_AMOUNT,
+    // 오른쪽으로 스크롤
+    currentScroll += CARD_WIDTH;
+    if (currentScroll > MAX_SCROLL_LEFT) {
+      currentScroll = MAX_SCROLL_LEFT; // 최대 스크롤 위치 제한
+    }
+    CAROUSEL.scrollTo({
+      left: currentScroll,
       behavior: 'smooth',
     });
   });
 
   PREV_BTN.addEventListener('click', () => {
-    CAROUSEL.scrollBy({
-      left: -SCROLL_AMOUNT,
+    // 왼쪽으로 스크롤
+    currentScroll -= CARD_WIDTH;
+    if (currentScroll < 0) {
+      currentScroll = 0; // 최소 스크롤 위치 제한
+    }
+    CAROUSEL.scrollTo({
+      left: currentScroll,
       behavior: 'smooth',
     });
   });

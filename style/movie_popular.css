@@ -1,8 +1,9 @@
+/* 기본 스타일 */
 .movies-navigation-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 70px;
+  gap: 20px; /* 카드 사이의 간격 조정 */
   padding: 20px;
 }
 
@@ -13,62 +14,188 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* box-shadow => [수평 오프셋][수직 오프셋][블러 반경][그림자 색상] */
   transition: transform 0.2s; /* 카드에 마우스를 올렸을 때, hover 기능이 0.2초 느리게 작동되게 해서 자연스럽게 표현이 되도록 효과를 준다!*/
   cursor: pointer; /* 카드 위에 마우스를 올렸을 때, 마우스 커서가 손가락으로 변경된다! */
-  margin-bottom: 20px;
-  transform: scale(0.75);
-  margin: auto -20px;
+  margin: auto; /* 카드 중앙 정렬 */
 }
 
 .movie-card:hover {
-  transform: scale(0.85);
+  transform: scale(1.15); /* 호버 시 확대 효과 */
 }
 
 .movie-poster {
-  max-width: 300px;
-  max-height: 540px;
-
-  min-width: 290px;
-  min-height: 515.5px;
+  min-width: 217px;
+  min-height: 387px;
 }
 
-.rating_badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  background: rgba(255, 215, 0, 0.7);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(3.9px);
-  -webkit-backdrop-filter: blur(3.9px);
-  border: 1px solid rgba(255, 215, 0, 0.55);
-}
-
-.movie-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(255, 215, 0, 0.7);
-  color: black;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* 최고의 평점 캐러셀 디자인 추가*/
-#top-rated-movie-carousel-track {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-/* 너이영 추천 캐러셀 디자인 추가 */
+/* 최고의 평점 캐러셀 디자인 추가 */
+#top-rated-movie-carousel-track,
 #choice-movie-carousel-track {
   display: flex;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  /* gap: 20px;
-  padding: 20px 0; */
+}
+
+/* 최고의 평점 영화 캐러셀 반응형 css 16:9 추가 */
+@media screen and (max-width: 1920px) {
+  .movies_container {
+    max-width: 90%;
+    margin: 0 auto; /* 좌우 여백 자동으로 설정하여 중앙 배치 */
+  }
+
+  .movie-card {
+    width: 18.5%;
+    margin: 1% 0.01% 2%; /* 카드 간격 넓히기 */
+  }
+
+  .movie-poster {
+    width: 100%;
+    height: auto;
+    max-height: 800px;
+  }
+
+  .movie-carousel-nav button {
+    padding: 20px; /* 캐러셀 버튼 크기 커지게 */
+    font-size: 22px; /* 화살표 크기 늘림 */
+  }
+}
+
+/* 모바일 환경 (최대 너비 767px) */
+@media screen and (max-width: 767px) {
+  .movie-search-container {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 여러 줄로 배치되도록 설정 */
+    gap: 10px; /* 카드 사이의 간격 설정 */
+    padding: 10px;
+  }
+
+  .movies-navigation-container {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 여러 줄로 배치되도록 설정 */
+    gap: 10px; /* 카드 사이의 간격 설정 */
+    padding: 10px;
+  }
+
+  .movie-card {
+    flex: 1 1 calc(50% - 10px); /* 한 줄에 2개의 카드 배치 */
+    max-width: calc(50% - 10px); /* 카드 너비 조정 */
+    margin: 0; /* 카드 간의 기본 마진 제거 */
+    transform: none; /* 모바일에서는 scale 효과 제거 */
+  }
+
+  .movie-poster {
+    width: 100%; /* 카드 안에서 포스터가 전체 너비를 채우도록 설정 */
+    height: auto;
+    max-height: 200px; /* 모바일 화면에 맞게 포스터 최대 높이 설정 */
+    object-fit: cover; /* 이미지가 영역을 채우도록 설정 */
+  }
+
+  .movie-title {
+    font-size: 20px; /* 모바일 화면에서 제목 크기 조정 */
+  }
+
+  .movie-rating {
+    font-size: 16px; /* 모바일 화면에서 평점 크기 조정 */
+  }
+
+  .review_form button {
+    width: 100%; /* 리뷰 폼 버튼 너비 조정 */
+  }
+
+  .carousel-slide {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .slide-item {
+    position: relative;
+    width: 100%;
+    margin-right: 8px; 
+  }
+
+  .movie-carousel-track {
+    width: 100%; 
+    display: flex;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap; 
+    cursor: grab; 
+  }
+
+  .movie-carousel-track.dragging {
+    cursor: grabbing; /* 드래그 중 커서 */
+  }
+
+  .navigation-container {
+    width: 100%;
+  }
+}
+
+/* 테블릿 환경 (최대 너비 1024px) */
+@media screen and (max-width: 1024px) {
+  .movie-search-container {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 여러 줄로 배치되도록 설정 */
+    gap: 15px; /* 카드 사이의 간격 설정 */
+    padding: 15px;
+  }
+
+  .movies-navigation-container {
+    display: flex;
+    flex-wrap: wrap; /* 카드가 여러 줄로 배치되도록 설정 */
+    gap: 15px; /* 카드 사이의 간격 설정 */
+    padding: 15px;
+  }
+
+  .movie-card {
+    flex: 1 1 calc(25% - 15px); /* 한 줄에 4개의 카드 배치 */
+    max-width: calc(25% - 15px); /* 카드 너비 조정 */
+    margin: 0; /* 카드 간의 기본 마진 제거 */
+    transform: none; /* 테블릿에서는 scale 효과 제거 */
+  }
+
+  .movie-poster {
+    width: 100%; /* 카드 안에서 포스터가 전체 너비를 채우도록 설정 */
+    height: auto;
+    max-height: 300px; /* 테블릿 화면에 맞게 포스터 최대 높이 설정 */
+    object-fit: cover; /* 이미지가 영역을 채우도록 설정 */
+  }
+
+  .movie-title {
+    font-size: 28px; /* 테블릿 화면에서 제목 크기 조정 */
+  }
+
+  .movie-rating {
+    font-size: 22px; /* 테블릿 화면에서 평점 크기 조정 */
+  }
+
+  .review_form button {
+    width: 100%; /* 리뷰 폼 버튼 너비 조정 */
+  }
+
+  .carousel-slide {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .slide-item {
+    position: relative;
+    width: 100%;
+    margin-right: 15px; 
+  }
+
+  .movie-carousel-track {
+    width: 100%; 
+    display: flex;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap; 
+    cursor: grab; 
+  }
+
+  .movie-carousel-track.dragging {
+    cursor: grabbing; /* 드래그 중 커서 */
+  }
+
+  .navigation-container {
+    width: 100%;
+  }
 }

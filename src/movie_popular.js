@@ -17,17 +17,10 @@ async function getTopRatedMovies() {
 }
 
 // 단일 영화 객체를 받아 HTML 카드로 변환하는 함수
-function createMovieCard(movie, RANK) {
+function createMovieCard(movie) {
   const CARD = document.createElement('div');
   CARD.className = 'movie-card';
   CARD.style.position = 'relative'; // 뱃지 위치 설정
-
-  if (RANK) {
-    const RANK_BADGE = document.createElement("div");
-    RANK_BADGE.innerText = `${RANK}위`;
-    RANK_BADGE.className = 'rank_badge';
-    CARD.appendChild(RANK_BADGE);
-  }
 
   const POSTERPATH = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -69,7 +62,6 @@ async function displayTopRatedMoviesCarousel() {
   );
 }
 
-// 캐러셀 네비게이션 설정 함수
 function setupCarouselNavigation(trackId, prevBtnId, nextBtnId) {
   const CAROUSEL_TRACK = document.getElementById(trackId);
   const prevBtn = document.getElementById(prevBtnId);
@@ -80,18 +72,36 @@ function setupCarouselNavigation(trackId, prevBtnId, nextBtnId) {
     return;
   }
 
-  const scrollAmount = CAROUSEL_TRACK.offsetWidth;
+  // 카드의 너비를 동적으로 계산
+  const CARD_WIDTH = CAROUSEL_TRACK.children[0]?.offsetWidth || 0;
+  // 트랙의 너비
+  const TRACK_WIDTH = CAROUSEL_TRACK.scrollWidth;
+
+  // 스크롤 시 최댓값과 최솟값을 설정
+  const MAX_SCROLL_LEFT = TRACK_WIDTH - CAROUSEL_TRACK.clientWidth;
+
+  let currentScroll = 0;
 
   nextBtn.addEventListener('click', () => {
-    CAROUSEL_TRACK.scrollBy({
-      left: scrollAmount,
+    // 오른쪽으로 스크롤
+    currentScroll += CARD_WIDTH;
+    if (currentScroll > MAX_SCROLL_LEFT) {
+      currentScroll = MAX_SCROLL_LEFT; // 최대 스크롤 위치 제한
+    }
+    CAROUSEL_TRACK.scrollTo({
+      left: currentScroll,
       behavior: 'smooth',
     });
   });
 
   prevBtn.addEventListener('click', () => {
-    CAROUSEL_TRACK.scrollBy({
-      left: -scrollAmount,
+    // 왼쪽으로 스크롤
+    currentScroll -= CARD_WIDTH;
+    if (currentScroll < 0) {
+      currentScroll = 0; // 최소 스크롤 위치 제한
+    }
+    CAROUSEL_TRACK.scrollTo({
+      left: currentScroll,
       behavior: 'smooth',
     });
   });

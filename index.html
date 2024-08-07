@@ -14,10 +14,13 @@
   <link rel="stylesheet" href="/style/movie_popular.css" />
 
   <style>
-    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
     * {
-      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      font-family: 'Pretendard Variable', Pretendard, -apple-system,
+        BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+        'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
     }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
@@ -43,36 +46,20 @@
     </div>
   </header>
 
+  <img src="" alt="">
+
   <div class="container" id="carousel-container">
     <div class="carousel-container">
       <div class="carousel-subcontainer" aria-live="polite">
         <div class="carousel-slide">
-          <div class="slide-item">
+          <div class="slide-item1">
             <img src="/assets/Slide1.jpg" alt="Page_1" />
-            <button class="shortcuts" id="Madame_Web" style="left: 20px; top: 20px">
-              바로가기
-            </button>
-            <button class="information" id="information_Madame_Web" style="left: 120px; top: 20px">
-              <i class="fas fa-info-circle"></i> 상세정보
-            </button>
           </div>
-          <div class="slide-item">
+          <div class="slide-item2">
             <img src="/assets/Slide2.jpg" alt="Page_2" />
-            <button class="shortcuts" id="The_Hobbit" style="left: 1520px; top: 20px">
-              바로가기
-            </button>
-            <button class="information" id="information_The_Hobbit" style="left: 1620px; top: 20px">
-              <i class="fas fa-info-circle"></i> 상세정보
-            </button>
           </div>
-          <div class="slide-item">
+          <div class="slide-item3">
             <img src="/assets/Slide3.jpg" alt="Page_3" />
-            <button class="shortcuts" id="Joker" style="left: 3020px; top: 20px">
-              바로가기
-            </button>
-            <button class="information" id="information_Joker" style="left: 3120px; top: 20px">
-              <i class="fas fa-info-circle"></i> 상세정보
-            </button>
           </div>
         </div>
         <div class="carousel-nav">
@@ -84,17 +71,13 @@
     </div>
     <section class="movies_container" id="movies_container"></section>
   </div>
-  <div class="moive-main-container">
-    
-  </div>
+  <div class="moive-main-container"></div>
   <div class="movie-search-container"></div>
-
+  <h3 style="color: white">
+    <인기급상승>
+  </h3>
   <div class="movie-carousel" id="movie-carousel">
-    <h3 style="color: white">
-      <인기급상승>
-    </h3>
-    <div class="movie-carousel-track" id="movie-carousel-track">
-    </div>
+    <div class="movie-carousel-track" id="movie-carousel-track"></div>
     <div class="movie-carousel-nav">
       <button id="prevMovieBtn"><i class="fas fa-chevron-left"></i></button>
       <button id="nextMovieBtn"><i class="fas fa-chevron-right"></i></button>
@@ -102,10 +85,10 @@
   </div>
 
   <!-- 최고의 평점 캐러셀 추가 -->
+  <h3 style="color: white">
+    <최고의 평점>
+  </h3>
   <div class="movie-carousel" id="top-rated-movie-carousel">
-    <h3 style="color: white">
-      <최고의 평점>
-    </h3>
     <div class="movie-carousel-track" id="top-rated-movie-carousel-track"></div>
     <div class="movie-carousel-nav">
       <button id="prevTopRatedMovieBtn">
@@ -118,10 +101,10 @@
   </div>
 
   <!-- 너이영 추천 캐러셀 추가 -->
+  <h3 style="color: white">
+    <너이영 추천>
+  </h3>
   <div class="movie-carousel" id="choice-movie-carousel">
-    <h3 style="color: white">
-      <너이영 추천>
-    </h3>
     <div class="movie-carousel-track" id="choice-movie-carousel-track"></div>
     <div class="movie-carousel-nav">
       <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -133,7 +116,7 @@
   <div class="movies-navigation-container" id="movies-navigation-container"></div>
 
   <script src="/src/carousel.js"></script>
-  <script type="module" src="/src/carouselshortcuts.js"></script>
+  <!-- <script type="module" src="/src/carouselshortcuts.js"></script> -->
   <script type="module" src="/src/movie_popular.js"></script>
   <script type="module" src="src/apikey.js"></script>
   <script type="module" src="src/movie_main.js"></script>

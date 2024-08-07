@@ -37,22 +37,15 @@ const fetchMovies = async () => {
 };
 
 // 단일 영화 객체를 받아 HTML 카드로 변환하는 함수
-const createMovieCard = (MOVIE, RANK) => {
+const createMovieCard = (MOVIE) => {
   const CARD = document.createElement("div");
-  CARD.classList.add("card");
+  CARD.classList.add("movie-card");
 
   const POSTER = document.createElement("img");
   POSTER.src = `https://image.tmdb.org/t/p/w500/${MOVIE.poster_path}`;
   POSTER.alt = MOVIE.title;
-  POSTER.classList.add("card_img");
+  POSTER.classList.add("movie-poster");
   CARD.appendChild(POSTER);
-
-  if (RANK) {
-    const RANK_BADGE = document.createElement("div");
-    RANK_BADGE.innerText = `${RANK}위`;
-    RANK_BADGE.classList.add("rank_badge");
-    CARD.appendChild(RANK_BADGE);
-  }
 
   CARD.addEventListener("click", () => {
     window.location.href = `/html/movie_detail.html?id=${MOVIE.id}`;
@@ -99,19 +92,28 @@ const updateCarousel = () => {
   }
 };
 
+// 버튼 클릭 시 캐러셀 스크롤 조정
+const scrollCarousel = (direction) => {
+  const { movieCarouselTrack } = DOM_ELEMENTS;
+  const TRACK_WIDTH = movieCarouselTrack.offsetWidth;
+  const CARD_WIDTH = TRACK_WIDTH / 4;
+  const MAX_INDEX = $movies.length - 1;
+
+  if (direction === 'right') {
+    $current_index = ($current_index >= MAX_INDEX) ? 0 : $current_index + 1;
+  } else if (direction === 'left') {
+    $current_index = ($current_index <= 0) ? MAX_INDEX : $current_index - 1;
+  }
+
+  updateCarousel();
+};
+
 // 버튼 클릭 이벤트 리스너 추가
 const setupButtonEvents = () => {
   const { prevMovieBtn, nextMovieBtn } = DOM_ELEMENTS;
 
-  prevMovieBtn.addEventListener("click", () => {
-    $current_index--;
-    updateCarousel();
-  });
-
-  nextMovieBtn.addEventListener("click", () => {
-    $current_index++;
-    updateCarousel();
-  });
+  prevMovieBtn.addEventListener("click", () => scrollCarousel('left'));
+  nextMovieBtn.addEventListener("click", () => scrollCarousel('right'));
 };
 
 // 검색 결과를 검색 컨테이너에 렌더링하는 함수
@@ -127,13 +129,10 @@ const renderMovies = () => {
   });
 };
 
-// 문자열에서 모든 공백을 제거하는 함수
-const removeAllSpaces = (STR) => STR.replace(/\s+/g, "");
-
 // 검색 기능을 업데이트하여 검색된 영화만 표시
 const searchMovies = async () => {
   const { searchInput, movieSearchContainer, mainCarouselContainer, movieCarousel, topRatedMovieCarousel, choiceMovieCarousel } = DOM_ELEMENTS;
-  const QUERY = removeAllSpaces(searchInput.value.trim().toLowerCase());
+  const QUERY = searchInput.value.trim().toLowerCase();
 
   if (!QUERY) {
     Swal.fire({
@@ -176,14 +175,16 @@ const showAllCards = () => {
 
 // 메인 캐러셀을 토글하는 함수
 const toggleMainCarousels = (SHOW) => {
-  const DISPLAY_STYLE = SHOW ? "block" : "none";
-  const { mainCarouselContainer, movieCarousel, topRatedMovieCarousel, choiceMovieCarousel, moviesNavigationContainer } = DOM_ELEMENTS;
+  const { mainCarouselContainer, movieCarousel, topRatedMovieCarousel, choiceMovieCarousel, moviesNavigationContainer, movieSearchContainer } = DOM_ELEMENTS;
 
-  mainCarouselContainer?.style.setProperty('display', DISPLAY_STYLE);
-  movieCarousel?.style.setProperty('display', DISPLAY_STYLE);
-  topRatedMovieCarousel?.style.setProperty('display', DISPLAY_STYLE);
-  choiceMovieCarousel?.style.setProperty('display', DISPLAY_STYLE);
-  moviesNavigationContainer?.style.setProperty('display', SHOW ? "block" : "none");
+  const displayClass = SHOW ? 'flex' : 'none'; 
+
+  mainCarouselContainer.style.display = displayClass;
+  movieCarousel.style.display = displayClass;
+  topRatedMovieCarousel.style.display = displayClass;
+  choiceMovieCarousel.style.display = displayClass;
+  moviesNavigationContainer.style.display = displayClass;
+  movieSearchContainer.style.display = SHOW ? 'none' : 'flex';
 };
 
 // 로고 클릭 시 페이지 리로드
@@ -218,6 +219,9 @@ const setupCategoryLinks = () => {
 
 // 페이지 로딩 시 초기 설정
 const initializePage = () => {
+  // 초기 상태에서 검색 컨테이너 숨기기
+  DOM_ELEMENTS.movieSearchContainer.style.display = 'none';
+
   fetchMovies();
   setupButtonEvents();
   setupLogoClick();

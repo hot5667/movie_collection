@@ -1,41 +1,62 @@
+/* 기본 스타일 */
 body {
   background-color: #0a0a1a;
 }
 
+/* 영화 컨테이너 */
 .movies_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
-.movie-carousel h3 {
-  font-size: 1.5rem; /* 제목의 크기를 설정합니다 */
-  font-weight: bold; /* 제목을 굵게 만듭니다 */
-  margin: 0; /* 제목의 기본 마진을 제거합니다 */
-  padding: 0.5rem 0; /* 제목의 위아래 패딩을 설정합니다 */
-  text-align: left; /* 제목을 중앙 정렬합니다 */
-  transform: translate(2%, 98%);
-}
-
-.card {
+/* 영화 카드 */
+.movie-card {
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* box-shadow => [수평 오프셋][수직 오프셋][블러 반경][그림자 색상] */
-  transition: transform 0.2s; /* 카드에 마우스를 올렸을 때, hover 기능이 0.2초 느리게 작동되게 해서 자연스럽게 표현이 되도록 효과를 준다!*/
-  cursor: pointer; /* 카드 위에 마우스를 올렸을 때, 마우스 커서가 손가락으로 변경된다! */
-  margin-bottom: 20px;
-  transform: scale(0.75);
-  margin: auto -20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  cursor: pointer;
+  margin: auto;
+  width: 18.5%;
+  margin: 1% 0.01% 2%;
 }
 
-.card:hover {
-  transform: scale(0.85);
+.movie-card:hover {
+  transform: scale(1.15);
 }
 
-.card_img {
-  max-width: 300px;
-  max-height: 540px;
-  min-width: 290px;
-  min-height: 515.5px;
+.movie-poster {
+  width: 100%;
+  height: auto;
+  max-height: 800px;
+  min-width: 217px;
+  min-height: 387px;
+}
+
+/* 캐러셀 스타일 */
+.movie-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.movie-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+h3 {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: left;
 }
 
 .movie-carousel-nav {
@@ -46,34 +67,132 @@ body {
   justify-content: space-between;
   transform: translateY(-50%);
 }
+
 .movie-carousel-nav button {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
+  font-size: 22px;
 }
 
-.movie-carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  transform: translateY(15%);
+/* 반응형 디자인 */
+@media screen and (max-width: 1920px) {
+  .movie-card {
+    width: 18.5%;
+    margin: 1% 0.01% 2%;
+  }
 }
 
-.movie-carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
+@media screen and (max-width: 1024px) {
 
-.rank_badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
+  .movie-search-container,
+  .movies-navigation-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .movie-card {
+    flex: 1 1 calc(25% - 15px);
+    max-width: calc(25% - 15px);
+    margin: 0;
+    transform: none;
+  }
+
+  .movie-poster {
+    max-height: 300px;
+  }
+
+  .movie-title {
+    font-size: 28px;
+  }
+
+  .movie-rating {
+    font-size: 22px;
+  }
+
+  .carousel-slide {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide-item {
+    position: relative;
+    width: 100%;
+    margin-right: 15px;
+  }
+
+  /* 영화 캐러셀 스타일 */
+  .movie-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    /* 기본 상단 여백 */
+  }
+
+  /* 태블릿 환경 */
+  @media screen and (max-width: 1024px) {
+    .movie-carousel {
+      margin-top: 60px;
+      /* 태블릿에서 상단 여백 */
+    }
+  }
+
+  /* 휴대폰 환경 */
+  @media screen and (max-width: 767px) {
+    .movie-carousel {
+      margin-top: 80px;
+      /* 휴대폰에서 상단 여백 더 증가 */
+    }
+
+    .movie-carousel h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      /* 제목 아래 여백 추가 */
+    }
+
+    /* 상단 캐러셀과의 간격 추가 */
+    .carousel-container {
+      margin-bottom: 40px;
+      /* 상단 캐러셀 아래 여백 증가 */
+    }
+
+    /* 영화 캐러셀 내부 요소들의 위치 조정 */
+    .movie-carousel-track {
+      padding-top: 20px;
+      /* 트랙 상단 여백 증가 */
+    }
+
+    h3 {
+      display: flex;
+      font-size: 12px;
+      font-weight: bold;
+      text-align: left;
+      flex-direction: row;
+      transform: translateY(90px);
+    }
+  }
+
+  /* 매우 작은 화면 (예: iPhone SE 등) */
+  @media screen and (max-width: 375px) {
+    .movie-carousel {
+      margin-top: 100px;
+      /* 더 작은 화면에서 추가 여백 */
+    }
+
+    .carousel-container {
+      margin-bottom: 50px;
+      /* 상단 캐러셀 아래 여백 더 증가 */
+    }
+
+    h3 {
+      font-size: 11px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
 }
