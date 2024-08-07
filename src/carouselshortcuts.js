@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // '바로가기' 버튼 클릭 이벤트 리스너
     SHORTCUT_BUTTON.addEventListener('click', function () {
-      window.location.href = `/html/movie_detail.html?id=${button.movieId}`;
+      window.location.href = `./html/movie_detail.html?id=${button.movieId}`;
     });
 
     // '상세정보' 버튼 클릭 이벤트 리스너
     INFO_BUTTON.addEventListener('click', function () {
-      window.location.href = `/html/movie_detail.html?id=${button.movieId}`;
+      window.location.href = `./html/movie_detail.html?id=${button.movieId}`;
     });
   });
 

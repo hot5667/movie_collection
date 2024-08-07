@@ -4,7 +4,7 @@ const { API_KEY, BASEURL } = DEFAPIKEY;
 // JSON 파일에서 영화 데이터를 불러오는 함수
 const FETCH_MOVIES_FROM_JSON = async () => {
   try {
-    const RESPONSE = await fetch('/json/movies.json');
+    const RESPONSE = await fetch('./json/movies.json');
     if (!RESPONSE.ok) throw new Error('네트워크 응답이 올바르지 않습니다.');
     return await RESPONSE.json();
   } catch (ERROR) {
@@ -46,7 +46,7 @@ const CREATE_MOVIE_CARD = (MOVIE_DATA) => {
   CARD.appendChild(BADGE);
 
   CARD.addEventListener('click', () => {
-    window.location.href = `/html/movie_detail.html?id=${MOVIE_DATA.id}`;
+    window.location.href = `./html/movie_detail.html?id=${MOVIE_DATA.id}`;
   });
 
   return CARD;

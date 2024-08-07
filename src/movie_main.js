@@ -48,7 +48,7 @@ const createMovieCard = (MOVIE) => {
   CARD.appendChild(POSTER);
 
   CARD.addEventListener("click", () => {
-    window.location.href = `/html/movie_detail.html?id=${MOVIE.id}`;
+    window.location.href = `./html/movie_detail.html?id=${MOVIE.id}`;
   });
 
   return CARD;
