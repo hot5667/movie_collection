@@ -14,7 +14,7 @@ body {
   margin: 0; /* 제목의 기본 마진을 제거합니다 */
   padding: 0.5rem 0; /* 제목의 위아래 패딩을 설정합니다 */
   text-align: left; /* 제목을 중앙 정렬합니다 */
-  transform: translate(2%,98%);
+  transform: translate(2%, 98%);
 }
 
 .card {
