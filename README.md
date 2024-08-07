@@ -87,3 +87,42 @@
       - 영화 제목 제작
       - 최고의 평점 제작
       - 너이영 추천 카드 캐러셀로 제작
+
+
+## 기종별 와이어 프레임
+
+### iPad Pro 메인 화면
+<img src="https://velog.velcdn.com/images/johj703/post/7f392caa-0f2b-4196-a2e4-c9d0d44b12f4/image.png" />
+
+### iPad Pro 상세 화면
+<img src="https://velog.velcdn.com/images/johj703/post/e658a6b4-71b1-4325-b66c-9777c8f57e5b/image.png" />
+
+### iPhone 12 Pro 메인 화면
+<img src="https://velog.velcdn.com/images/johj703/post/d92b2d91-fa26-49ef-ba14-8e238d440301/image.png" />
+
+### iPhone 12 Pro 상세 화면
+<img src="https://velog.velcdn.com/images/johj703/post/f6968d89-e282-41fe-b474-27b2eac3beb0/image.png" />
+
+### 갤럭시 Z 폴드 접었을 때 메인 화면
+<img src="https://velog.velcdn.com/images/johj703/post/b9966846-ce63-4de8-a6a1-82b8b4450db4/image.png" />
+
+### 갤럭시 Z 폴드 접었을 때 상세 화면
+<img src="https://velog.velcdn.com/images/johj703/post/64ab3161-cc15-4dc4-be82-09ebc5546337/image.png" />
+
+### 갤럭시 Z 폴드 폈을 때 메인 화면
+<img src="https://velog.velcdn.com/images/johj703/post/25f96896-91dc-4230-95f8-1937266d1b19/image.png" />
+
+### 갤럭시 Z 폴드 폈을 때 상세 화면
+<img src="https://velog.velcdn.com/images/johj703/post/b78bc7ef-fc88-4b1b-8528-5ad42db9910a/image.png" />
+
+### PC(16:9) 해상도 메인 화면(평상시 PC환경)
+<img src="https://velog.velcdn.com/images/johj703/post/6079dedb-634a-4f6c-888f-b4f29031d071/image.png" />
+
+### PC(16:9) 해상도 상세 화면(평상시 PC환경)
+<img src="https://velog.velcdn.com/images/johj703/post/83049853-9fe7-4166-925c-73727dfbd4e4/image.png" />
+
+### PC(16:10) 해상도 메인 화면(노트북 환경)
+<img src="https://velog.velcdn.com/images/johj703/post/9ad77493-3983-45af-ab80-0aa2017be4a2/image.png" />
+
+### PC(16:10) 해상도 상세 화면(노트북 환경)
+<img src="https://velog.velcdn.com/images/johj703/post/cd61e055-808c-4e3b-8678-0988491b7d24/image.png" />
